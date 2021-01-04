@@ -25,10 +25,26 @@ function addTask(evt) {
   // Append the link to the li element
   li.appendChild(link);
   // Append the li element into the unordered list
-  const taskList = document.querySelector('ul');
+  const taskList = document.querySelector('ul.collection');
   taskList.appendChild(li);
   // Clear the input field and the backgound color
   newTaskInput.value = '';
   newTaskInput.style.backgroundColor = '';
+}
 
+
+// Remove the task from the list when its trashbin icon is clicked
+// Put the EventListener on the parent of the li elements ie unordered list
+const taskList = document.querySelector('ul.collection');
+taskList.addEventListener('click', removeTask);
+
+function removeTask(evt) {
+  // Only when the trashbin icon is clicked, the task should be removed
+  // We check if the parent element has a class named delete-item
+  if (evt.target.parentElement.classList.contains('delete-item')) {
+    if (confirm('Are you sure?')) {
+      // Remove the li elememnt which is the parent of the parent of the trashbin icon
+      evt.target.parentElement.parentElement.remove();
+    }
+  }
 }

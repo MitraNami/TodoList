@@ -28,7 +28,7 @@ function addTask(evt) {
   const taskList = document.querySelector('ul.collection');
   taskList.appendChild(li);
   // Persist to localStorage
-  persist('tasks', newTask);
+  persistInLocalStorage('tasks', newTask);
   // Clear the input field and the backgound color
   newTaskInput.value = '';
   newTaskInput.style.backgroundColor = '';
@@ -47,6 +47,9 @@ function removeTask(evt) {
     if (confirm('Are you sure?')) {
       // Remove the li elememnt which is the parent of the parent of the trashbin icon
       evt.target.parentElement.parentElement.remove();
+      // Remove the task from localStorage as well
+      const taskName = evt.target.parentElement.previousSibling.textContent;
+      removeFromLocalStorage('tasks', taskName);
     }
   }
 }

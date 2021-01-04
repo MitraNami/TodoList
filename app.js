@@ -64,8 +64,24 @@ function removeAllTasks(evt) {
     // Remove all the li elements in the unordered list
     while (taskList.firstChild) {
       taskList.removeChild(taskList.firstChild);
-    }
-    
+    }  
   }
 }
 
+// Filter the tasks
+const filterInput = document.querySelector('#filter');
+filterInput.addEventListener('keyup', filterTasks);
+
+function filterTasks(evt) {
+  const taskQueried = evt.target.value.toLowerCase();
+  const lis = document.querySelectorAll('.collection-item');
+  // Show only the li elements whose textNodes includes the task queried string
+  lis.forEach(li => {
+    const taskName = li.firstChild.textContent.toLowerCase();
+    if (taskName.includes(taskQueried)) {
+      li.style.display = 'block';
+    } else {
+      li.style.display = 'none';
+    }
+  });
+}

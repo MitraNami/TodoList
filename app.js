@@ -27,6 +27,8 @@ function addTask(evt) {
   // Append the li element into the unordered list
   const taskList = document.querySelector('ul.collection');
   taskList.appendChild(li);
+  // Persist to localStorage
+  persist('tasks', newTask);
   // Clear the input field and the backgound color
   newTaskInput.value = '';
   newTaskInput.style.backgroundColor = '';

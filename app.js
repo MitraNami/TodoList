@@ -69,7 +69,9 @@ function removeAllTasks(evt) {
     // Remove all the li elements in the unordered list
     while (taskList.firstChild) {
       taskList.removeChild(taskList.firstChild);
-    }  
+    }
+    // Remove all tasks from localStorage as well
+    removeAllFromLocalStorage('tasks');
   }
 }
 

@@ -48,3 +48,24 @@ function removeTask(evt) {
     }
   }
 }
+
+
+// Remove all the tasks when the CLEAR TASKS button is clicked
+const clearbtn = document.querySelector('.clear-task');
+clearbtn.addEventListener('click', removeAllTasks);
+
+function removeAllTasks(evt) {
+  evt.preventDefault();
+  const taskList = document.querySelector('ul.collection');
+  if (taskList.children.length === 0) {
+    return;
+  }
+  if (confirm('Are you sure you want to delete all tasks?')) {
+    // Remove all the li elements in the unordered list
+    while (taskList.firstChild) {
+      taskList.removeChild(taskList.firstChild);
+    }
+    
+  }
+}
+

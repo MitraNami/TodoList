@@ -18,3 +18,9 @@ const removeFromLocalStorage = function(name, value) {
   const newValues = values.filter(val => val !== value);
   localStorage.setItem(name, JSON.stringify(newValues));
 };
+
+
+// Remove all tasks from localStorage for the key name
+const removeAllFromLocalStorage = function(name) {
+  localStorage.setItem(name, '[]');
+};
